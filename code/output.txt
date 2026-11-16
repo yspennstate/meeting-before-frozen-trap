@@ -1,0 +1,55 @@
+Output of the four programs, run with Python 3.13 and SymPy 1.13.1 on 16 November 2026.
+Times in seconds are wall-clock on a shared machine.
+
+$ python3 meeting.py
+uniform 4-cycle, F                                         3/7          ok
+uniform K4, F                                              7/16         ok
+bound 1/3 + (2/3) sum pi^3 at uniform pi, n = 4            3/8          ok
+uniform 4-cycle, strict event M_good < M_bad               41/112       ok
+uniform K4, strict event M_good < M_bad                    3/8          ok
+4-cycle, synchronous discrete time, F                      5/16         ok
+two states, p = (1, 3): F equals the bound                 5/8          ok
+(exit status 0)
+
+$ python3 n3.py
+numerator equals the closed form                                                 ok
+numerator: 25 terms, all coefficients positive (min 1)                           ok
+S e_2 - 2 e_3 has positive coefficients                                          ok
+a monomial in w_1, w_2 alone (absent edge w_3)                                   ok
+a monomial in w_1, w_3 alone (absent edge w_2)                                   ok
+a monomial in w_2, w_3 alone (absent edge w_1)                                   ok
+closed form of D equals the general solver, and D > 0, at 30 integer points      ok
+   eps = 1e-1   D = 6.839e-03
+   eps = 1e-2   D = 8.158e-04
+   eps = 1e-3   D = 8.316e-05
+   eps = 1e-4   D = 8.332e-06
+   eps = 1e-5   D = 8.333e-07
+   eps = 1e-6   D = 8.333e-08
+D decreases to 0 along w = (eps, eps, 1), p = (2, 3, 7)                          ok
+(exit status 0)
+
+$ python3 n4_cramer.py star path cycle paw diamond k4
+star     det A_z terms [7, 19, 19, 19]    min det coeff 1 | R terms     3357, degree 27, min coeff 6, negative 0 | 1 s
+star     exact identity N = R / Q at 10 of 10 integer points
+path     det A_z terms [12, 12, 22, 22]   min det coeff 1 | R terms     3486, degree 27, min coeff 6, negative 0 | 1 s
+path     exact identity N = R / Q at 10 of 10 integer points
+cycle    det A_z terms [40, 40, 40, 40]   min det coeff 1 | R terms    36884, degree 27, min coeff 6, negative 0 | 7 s
+cycle    exact identity N = R / Q at 10 of 10 integer points
+paw      det A_z terms [24, 37, 37, 59]   min det coeff 1 | R terms    28514, degree 27, min coeff 6, negative 0 | 8 s
+paw      exact identity N = R / Q at 10 of 10 integer points
+diamond  det A_z terms [62, 62, 89, 89]   min det coeff 1 | R terms   177140, degree 27, min coeff 6, negative 0 | 50 s
+diamond  exact identity N = R / Q at 10 of 10 integer points
+k4       det A_z terms [128, 128, 128, 128] min det coeff 1 | R terms   764076, degree 27, min coeff 6, negative 0 | 274 s
+k4       exact identity N = R / Q at 10 of 10 integer points
+ALL PASS
+(exit status 0)
+
+$ python3 n4_integer.py --compare
+C4       det A_z terms [40, 40, 40, 40]   R terms    36884, min coeff 6, negative 0, identity 2/2 | coefficient-by-coefficient match with n4_cramer: True | 7 s
+K4       det A_z terms [128, 128, 128, 128] R terms   764076, min coeff 6, negative 0, identity 2/2 | coefficient-by-coefficient match with n4_cramer: True | 273 s
+P4       det A_z terms [12, 12, 22, 22]   R terms     3486, min coeff 6, negative 0, identity 2/2 | coefficient-by-coefficient match with n4_cramer: True | 1 s
+star     det A_z terms [7, 19, 19, 19]    R terms     3357, min coeff 6, negative 0, identity 2/2 | coefficient-by-coefficient match with n4_cramer: True | 1 s
+paw      det A_z terms [24, 37, 37, 59]   R terms    28514, min coeff 6, negative 0, identity 2/2 | coefficient-by-coefficient match with n4_cramer: True | 6 s
+diamond  det A_z terms [62, 62, 89, 89]   R terms   177140, min coeff 6, negative 0, identity 2/2 | relabelled support; term counts match n4_cramer: True | 43 s
+ALL PASS
+(exit status 0)
