@@ -12,5 +12,7 @@
 | Proposition 1.3 (sharpness on two and three states) | new | this paper, code/n3.py |
 | Proposition 4.1 and the four-state case of Theorem 1.2 (positivity certificate) | new; a finite computation checked by two independent programs | this paper, code/n4_cramer.py, code/n4_integer.py |
 | Conjecture 5.1 (refined inequality for all chains) | new conjecture | this paper |
-| Remark 5.2 (scale separation), including the value 1/3 + (2/3) 4^{-n} for Holroyd's example | heuristic, not proved | this paper |
+| Meeting-time and hitting-time bounds that motivate the conjecture | prior work | D. Aldous and J. A. Fill, Chapter 14; R. I. Oliveira, Trans. Amer. Math. Soc. 364 (2012); P. Sousi and P. Winkler, Combin. Probab. Comput. 23 (2014) |
+| The elementary bound P >= sum_x pi(x)^2 >= 1/n (the conjecture on at most three states) | standard | this paper, Section 1 |
+| Remark 5.2 (the block relation), including the value 1/3 + (2/3) 4^{-m} for Holroyd's example | heuristic, not proved | this paper |
 | Remark 5.3 example values | new computation | this paper, code/meeting.py |

@@ -53,57 +53,61 @@
 \thispagestyle{fancy}
 
 \begin{abstract}
-Two independent rate-one random walks $X,Y$ on a finite reversible Markov chain and a frozen point $Z$ start from the stationary law $\pi$. Addario-Berry, Oliveira, Peres and Sousi conjectured that $X$ and $Y$ meet before either hits $Z$ with probability at least $1/3$. For chains on three or four states we prove that this probability exceeds $1/3+\frac23\sum_x\pi(x)^3$; equivalently, unless the three points start at one state, $X$ and $Y$ meet first with probability greater than $1/3$. The conjecture therefore holds for chains on at most four states. On three states the proof is a closed formula. On four states it is a polynomial with positive coefficients, built by two independent computer algebra programs. On three states the refined constant is approached at every $\pi$. We conjecture the refined inequality for all finite reversible chains.
+Two independent rate-one random walks $X,Y$ on a finite reversible Markov chain and a trap $Z$ that does not move start independently from the stationary law $\pi$. Addario-Berry, Oliveira, Peres and Sousi conjectured that $X$ and $Y$ meet before either of them hits $Z$ with probability at least $1/3$. Since the walkers meet at time $0$ when $X_0=Y_0$, this probability is at least $\sum_x\pi(x)^2$, which gives the conjecture on at most three states and only $1/4$ on four. We prove that on three and four states the probability exceeds $\frac13+\frac23\sum_x\pi(x)^3$; equivalently, unless $X_0$, $Y_0$ and $Z$ coincide, $X$ and $Y$ meet first with conditional probability greater than $1/3$. In particular the conjecture holds on four states. On three states the difference has a closed form, and its infimum over the chains with a given $\pi$ is $0$. On four states the difference, multiplied by a positive polynomial, is a polynomial with positive coefficients in the weights and the conductances. We conjecture the lower bound $\frac13+\frac23\sum_x\pi(x)^3$ for all finite reversible chains.
 \end{abstract}
 
-\noindent\textit{Keywords:} reversible Markov chains, random walks, meeting times, hitting times, positivity certificates.\\
-\textit{2020 Mathematics Subject Classification:} 60J27, 60J10, 05C81.
+\noindent\textit{Keywords:} reversible Markov chains, random walks, meeting times, hitting times, first-step equations.\\
+\textit{2020 Mathematics Subject Classification:} 60J27, 05C81.
 
 \section{Introduction}\label{sec:intro}
 
-Let $P$ be the transition matrix of a finite, irreducible and reversible Markov chain with stationary law $\pi$. Let $X$ and $Y$ be independent continuous-time chains that jump at rate $1$ according to $P$, and let $Z$ be a point that does not move. The three starting points $X_0,Y_0,Z_0$ are independent with law $\pi$. Write
+Following~\cite{ABOPS}, let $P$ be the transition matrix of a finite, irreducible and reversible Markov chain with stationary law $\pi$. Let $X$ and $Y$, the walkers, be independent continuous-time chains that jump at rate $1$ according to $P$, and let $Z$, the trap, be a point that does not move. The points $X_0,Y_0,Z$ are independent with law $\pi$. Write
 \[
 \good=\inf\{t\ge0:X_t=Y_t\},\qquad \bad=\inf\{t\ge0:X_t=Z \text{ or } Y_t=Z\}.
 \]
-Addario-Berry, Oliveira, Peres and Sousi~\cite{ABOPS} asked how likely it is that $X$ and $Y$ meet before either of them is trapped at $Z$, and stated the following conjecture (Conjecture~1.5 in the arXiv version of~\cite{ABOPS}; theorem numbers below refer to that version).
+Addario-Berry, Oliveira, Peres and Sousi~\cite{ABOPS} asked how likely it is that $X$ and $Y$ meet before either of them reaches the trap, and stated the following conjecture (\cite[Conjecture~1.5]{ABOPS}; theorem numbers of~\cite{ABOPS} are those of arXiv:1506.07845v1).
 
 \begin{conjecture}[Addario-Berry, Oliveira, Peres and Sousi~\cite{ABOPS}]\label{conj:abops}
 For every finite irreducible reversible chain, $\Pp(\good\le\bad)\ge1/3$.
 \end{conjecture}
 
-If $Z$ also moved at rate $1$, the three walkers would be exchangeable and the bound $1/3$ would follow from symmetry; the conjecture asserts that freezing the trap cannot hurt the two moving walkers by more than this. For transitive chains, \cite[Theorem~1.2]{ABOPS} gives $\Pp(\good<\bad)\ge1/4$, and \cite[Theorem~1.3]{ABOPS} gives a lower bound for transitive chains and general speeds. For general speeds transitivity cannot be dropped~\cite[Theorem~1.4]{ABOPS}, and without reversibility \cref{conj:abops} fails badly~\cite[Remark~1.6]{ABOPS}. An example of Alexander Holroyd, described in~\cite[Section~6]{ABOPS}, gives transitive chains with $\Pp(\good\le\bad)\le1/3+\delta$ for every $\delta>0$, so the constant $1/3$ would be best possible. The authors note that any uniform lower bound $c>0$ over all finite irreducible reversible chains would already be new.
+The conjecture comes from bounds relating the meeting time of two random walks to the hitting time of a fixed state~\cite[Chapter~14]{AF} and~\cite{Oliveira,SousiWinkler}. For transitive chains, \cite[Theorem~1.2]{ABOPS} gives $\Pp(\good<\bad)\ge1/4$; the proof uses the relation between meeting times and hitting times of single states that holds when the chain is transitive. The same authors give a lower bound for transitive chains and general speeds~\cite[Theorem~1.3]{ABOPS}; for general speeds transitivity cannot be dropped~\cite[Theorem~1.4]{ABOPS}, and without reversibility \cref{conj:abops} fails~\cite[Remark~1.6]{ABOPS}.
 
-The event $\{\good\le\bad\}$ contains the event that all three points start at the same state, which has probability $\sum_x\pi(x)^3$. Removing it gives a stronger statement:
+If the trap also moved at rate $1$, then $X$, $Y$ and $Z$ would be exchangeable and $\Pp(\good\le\bad)\ge1/3$ would follow by symmetry. With the trap fixed, the pair $\{X,Y\}$ is no longer exchangeable with the pairs $\{X,Z\}$ and $\{Y,Z\}$, and no lower bound that is uniform over finite irreducible reversible chains is known~\cite{ABOPS}. An example of Alexander Holroyd~\cite[Section~6]{ABOPS} gives transitive chains with $\Pp(\good\le\bad)\le1/3+\delta$ for every $\delta>0$, so the constant $1/3$ would be best possible. On a chain with $n$ states the walkers meet at time $0$ when $X_0=Y_0$, so
+\[
+\Pp(\good\le\bad)\ \ge\ \sum_x\pi(x)^2\ \ge\ \frac1n .
+\]
+This gives \cref{conj:abops} on at most three states, and only $1/4$ at the uniform law on four states. The event $\{X_0=Y_0=Z\}$ has probability $\sum_x\pi(x)^3$ and lies in $\{\good\le\bad\}$ for every chain. Removing it and comparing what is left with $1/3$ gives the inequality
 \begin{equation}\label{eq:refined}
 D(P):=\Pp(\good\le\bad)-\frac13-\frac23\sum_x\pi(x)^3\ \ge\ 0,
 \end{equation}
-which says exactly that $\Pp(\good\le\bad\mid X_0,Y_0,Z_0\text{ not all equal})\ge1/3$. Since $\sum_x\pi(x)^3>0$, \eqref{eq:refined} implies \cref{conj:abops}. Equality holds in~\eqref{eq:refined} for every chain on two states (\cref{lem:two}).
+that is, $\Pp(\good\le\bad\mid X_0,Y_0,Z\text{ not all equal})\ge1/3$. Inequality~\eqref{eq:refined} implies \cref{conj:abops} and holds with equality on every chain with two states (\cref{lem:two}).
 
 \begin{theorem}\label{thm:main}
-For every irreducible reversible chain on three or four states and every stationary law $\pi$, $D(P)>0$. In particular \cref{conj:abops} holds, with strict inequality, for all chains on at most four states.
+For every irreducible reversible chain $P$ on three or four states, $D(P)>0$. In particular \cref{conj:abops} holds, with strict inequality, on four states.
 \end{theorem}
 
 \begin{proposition}\label{prop:sharp}
-On two states $D\equiv0$. On three states, for every $\pi$ with positive entries, $\inf D=0$, the infimum being over all reversible chains with stationary law $\pi$; it is not attained.
+On two states $D=0$ for every chain. On three states, for every $\pi$ with positive entries, the infimum of $D$ over the reversible chains with stationary law $\pi$ is $0$, and it is not attained.
 \end{proposition}
 
-So on three states the refined bound~\eqref{eq:refined} is sharp at every $\pi$, while \cref{conj:abops} itself is far from sharp there: the smallest value of $\frac13+\frac23\sum\pi^3$ over $\pi$ on three states is $11/27$.
+So on three states the right side of~\eqref{eq:refined} cannot be raised at any $\pi$, while \cref{conj:abops} is far from sharp there: the smallest value of $\frac13+\frac23\sum_x\pi(x)^3$ over $\pi$ on three states is $11/27$. \Cref{conj:abops} remains open on five or more states.
 
-The proof rests on a reformulation of $D$ (\cref{lem:N}). For distinct states $x,y,z$ let $h_z(x,y)$ be the probability that $X$ and $Y$, started at $x$ and $y$, meet before either hits the frozen point $z$. Then
+The proof rests on the triple form of $D$ (\cref{lem:N}). For distinct states $x,y,z$ let $h_z(x,y)$ be the probability that $X$ and $Y$, started at $x$ and $y$, meet before either hits the trap placed at $z$. Then
 \begin{equation}\label{eq:triples}
 D(P)\ge0\iff\sum_{\{x,y,z\}}\pi(x)\pi(y)\pi(z)\bigl[h_z(x,y)+h_x(y,z)+h_y(z,x)\bigr]\ \ge\ \sum_{\{x,y,z\}}\pi(x)\pi(y)\pi(z),
 \end{equation}
-both sums running over unordered triples of distinct states. If all three walkers moved, the three bracketed events would be disjoint and exhaustive and the bracket would equal $1$; \eqref{eq:refined} says that with a frozen trap the bracket is at least $1$ on average over triples. On three states there is a single triple and the bracket has a closed form (\cref{sec:three}). On four states we solve the first-step equations by Cramer's rule and show that a common multiple of the difference of the two sides of~\eqref{eq:triples} is a polynomial with positive coefficients in the stationary weights and the edge conductances (\cref{sec:four}).
+both sums running over unordered triples of distinct states. If the trap also moved, the three bracketed events would be disjoint and exhaustive and the bracket would equal $1$; inequality~\eqref{eq:refined} says that with the trap fixed the bracket is at least $1$ on average over triples. On three states there is a single triple and the bracket has a closed form (\cref{sec:three}). On four states we solve the first-step equations by Cramer's rule and show that the difference of the two sides of~\eqref{eq:triples}, multiplied by a positive polynomial, is a polynomial with positive coefficients in the weights and the conductances (\cref{sec:four}).
 
-We do not know whether \eqref{eq:refined} holds for all finite reversible chains, and state it as \cref{conj:refined}. \Cref{sec:remarks} gives a scale-separation heuristic under which chains built from blocks on widely separated time scales have $D\to0$ for every $\pi$; Holroyd's example is of this kind, and the heuristic reproduces the value $\frac13+\frac23\,4^{-n}$ for it. The section also records that the convention $\good\le\bad$ matters: with the strict event, or with walkers that move synchronously in discrete time, \eqref{eq:refined} fails on four states.
+Whether~\eqref{eq:refined} holds for all finite reversible chains is open (\cref{conj:refined}). \Cref{rem:scales} describes a relation, the block relation, for chains built from blocks on widely separated time scales, under which $D\to0$ for every $\pi$; Holroyd's example is of this kind. With $\{\good<\bad\}$ in place of $\{\good\le\bad\}$ the bound $1/3$ fails on every chain on two states, and for walks moving synchronously in discrete time it fails on the $4$-cycle (\cref{rem:conv}).
 
-The question, the setting and the target constant $1/3$ are due to Addario-Berry, Oliveira, Peres and Sousi~\cite{ABOPS}, and the sharpness example is Holroyd's. The tools used here are standard: first-step equations for the pair of walkers, the network description of reversible chains (see~\cite[Chapter~9]{LP} and~\cite[Chapter~3]{AF}), and Cramer's rule. What is new is the refined inequality~\eqref{eq:refined}, the triple form~\eqref{eq:triples}, the closed formula for three states, the positivity certificate for four states, and the observation that the refined constant is attained in the limit at every $\pi$ on three states.
+The question, the setting and the constant $1/3$ are due to Addario-Berry, Oliveira, Peres and Sousi~\cite{ABOPS}, and the sharpness example is Holroyd's~\cite[Section~6]{ABOPS}. The tools used here are standard: first-step equations for the pair of walkers, the network description of reversible chains (see~\cite[Chapter~9]{LP} and~\cite[Chapter~3]{AF}), and Cramer's rule. What is new is inequality~\eqref{eq:refined}, the triple form~\eqref{eq:triples}, the closed form on three states, the polynomial identity of \cref{prop:cert} on four states, and the fact that the infimum of $D$ is $0$ at every $\pi$ on three states.
 
 \section{Setting and first-step equations}\label{sec:setup}
 
-A reversible chain on $V=\{1,\dots,n\}$ is described by positive weights $p_x$ and symmetric conductances $c_{xy}=c_{yx}\ge0$ ($x\ne y$) whose positive entries form a connected graph: the chain jumps from $x$ to $y$ at rate $c_{xy}/p_x$ and has stationary law $\pi(x)=p_x/S$, $S=\sum_xp_x$. Every irreducible reversible chain has this form, and multiplying all rates by a constant does not change the probability of the event $\{\good\le\bad\}$, so we may use $c$ and $p$ freely. Let $e_3(p)=\sum_{x<y<z}p_xp_yp_z$.
+A reversible chain on $V=\{1,\dots,n\}$ is described by positive weights $p_x$ and symmetric conductances $c_{xy}=c_{yx}\ge0$ ($x\ne y$) whose support graph, the graph on $V$ whose edges are the pairs with $c_{xy}>0$, is connected: the chain jumps from $x$ to $y$ at rate $c_{xy}/p_x$ and has stationary law $\pi(x)=p_x/S$, $S=\sum_xp_x$. Every irreducible reversible chain has this form, and multiplying all rates by a constant does not change the probability of the event $\{\good\le\bad\}$, so we may use $c$ and $p$ freely. Let $e_3(p)=\sum_{x<y<z}p_xp_yp_z$.
 
-Fix the trap $z$. For $x\ne y$, both different from $z$, let $h_z(x,y)=\Pp_{x,y}(\good<\bad)$; at time $0$ we have $\good=0$ when $x=y$ and $\bad=0$ when $z\in\{x,y\}$, and after time $0$ two of the walkers almost surely never jump at the same moment, so these values together with $h_z(x,y)$ determine $\Pp(\good\le\bad\mid Z=z)$. By exchangeability of $X$ and $Y$, $h_z(x,y)=h_z(y,x)$, so we regard $h_z$ as a function of unordered pairs $\{x,y\}\subset V\setminus\{z\}$.
+Fix the trap at $z$, and write $\Pp_{x,y}$ for the law of the walkers started at $X_0=x$, $Y_0=y$. For $x\ne y$, both different from $z$, let $h_z(x,y)=\Pp_{x,y}(\good<\bad)$. At time $0$ we have $\good=0$ when $x=y$ and $\bad=0$ when $z\in\{x,y\}$, and after time $0$ the two walkers almost surely never jump at the same moment, so these values together with $h_z(x,y)$ determine $\Pp(\good\le\bad\mid Z=z)$. By exchangeability of $X$ and $Y$, $h_z(x,y)=h_z(y,x)$, so we regard $h_z$ as a function of unordered pairs $\{x,y\}\subset V\setminus\{z\}$.
 
 \begin{lemma}\label{lem:N}
 Let $N=3S^3D(P)$. Then
@@ -118,7 +122,7 @@ Conditioning on the starting points,
 \[
 S^3\,\Pp(\good\le\bad)=S\sum_xp_x^2+2\sum_zp_z\sum_{\{x,y\}\subset V\setminus\{z\}}p_xp_y\,h_z(x,y),
 \]
-the first term coming from $X_0=Y_0$ (whatever $Z_0$ is) and the second from $X_0\ne Y_0$, both different from $Z_0$, in either order. Write $s_{21}=\sum_{x\ne y}p_x^2p_y$. Then $S\sum p_x^2=\sum p_x^3+s_{21}$ and $S^3=\sum p_x^3+3s_{21}+6e_3(p)$, so
+the first term coming from $X_0=Y_0$ (whatever $Z$ is) and the second from $X_0\ne Y_0$, both different from $Z$, in either order. Write $s_{21}=\sum_{x\ne y}p_x^2p_y$. Then $S\sum p_x^2=\sum p_x^3+s_{21}$ and $S^3=\sum p_x^3+3s_{21}+6e_3(p)$, so
 \[
 3S\sum_xp_x^2-S^3-2\sum_xp_x^3=-6e_3(p),
 \]
@@ -153,42 +157,41 @@ The entry linking $\{x,y\}$ and $\{k,y\}$ is $-p_yc_{xk}$ from either side, so $
 \[
 \kappa_{\{x,y\}}=(p_x+p_y)c_{xy}+p_yc_{xz}+p_xc_{yz}\ \ge0.
 \]
-Hence $A_z$ is the Laplacian of a weighted graph on the pairs, plus the diagonal matrix of the $\kappa$'s, and
+Hence $A_z$ is the Laplacian of a weighted graph on the pairs, plus the diagonal matrix of the $\kappa$'s: for pairs $\sigma,\tau$ let $\gamma_{\sigma\tau}=-(A_z)_{\sigma\tau}\ge0$ when $\sigma\ne\tau$; then
 \[
-u^{\mathsf T}A_zu=\sum_{\text{edges }\{\alpha,\beta\}}w_{\alpha\beta}\,(u_\alpha-u_\beta)^2+\sum_\alpha\kappa_\alpha u_\alpha^2 .
+u^{\mathsf T}A_zu=\sum_{\{\sigma,\tau\}}\gamma_{\sigma\tau}\,(u_\sigma-u_\tau)^2+\sum_\sigma\kappa_\sigma u_\sigma^2 .
 \]
-The edges of this graph with positive weight are the transitions of the pair $(X,Y)$ between pairs of distinct states avoiding $z$, and $\kappa_\alpha>0$ exactly when the pair can leave this set in one jump. Since the chain is irreducible, from every such pair the walker $X$ can reach $z$, so every connected component of the graph contains a pair with $\kappa>0$. If $u^{\mathsf T}A_zu=0$ then $u$ is constant on each component and vanishes where $\kappa>0$, so $u=0$.
+The pairs $\sigma,\tau$ with $\gamma_{\sigma\tau}>0$ are those between which the pair of walkers moves in one jump while avoiding $z$, and $\kappa_\sigma>0$ exactly when from $\sigma$ the walkers can meet or reach $z$ in one jump. Since the chain is irreducible, from a pair $\{x,y\}$ we can move $X$ alone along a path to $z$ with $Y$ fixed at $y$; the last pair before $X$ steps onto $y$ or $z$ is a pair $\{x',y\}$ with $c_{x'y}>0$ or $c_{x'z}>0$, hence with $\kappa_{\{x',y\}}>0$. So every connected component of the graph on the pairs contains a pair with $\kappa>0$. If $u^{\mathsf T}A_zu=0$ then $u$ is constant on each component and vanishes where $\kappa>0$, so $u=0$.
 \end{proof}
 
 \section{Three states}\label{sec:three}
 
-Let $n=3$, write $w_z$ for the conductance of the edge opposite $z$ (so $w_1=c_{23}$, $w_2=c_{13}$ and $w_3=c_{12}$), and let $e_2=p_1p_2+p_1p_3+p_2p_3$, $e_3=p_1p_2p_3$. For each $z$ there is one transient pair, and \cref{lem:pd} gives
+Let $n=3$, write $w_z$ for the conductance of the edge opposite $z$ (so $w_1=c_{23}$, $w_2=c_{13}$ and $w_3=c_{12}$), and let $e_2=p_1p_2+p_1p_3+p_2p_3$; here $e_3(p)=p_1p_2p_3$, written $e_3$. For each $z$ the only pair avoiding $z$ is $\{x,y\}=V\setminus\{z\}$, and \cref{lem:pd} gives
 \[
-h_z=\frac{a_z}{a_z+b_z},\qquad a_z=w_z(S-p_z),\qquad b_z=\sum_{x\ne z}w_xp_x .
+h_z=\frac{m_z}{d_z},\qquad m_z=w_z(S-p_z),\qquad t_z=\sum_{x\ne z}w_xp_x,\qquad d_z=m_z+t_z .
 \]
-Indeed, from the pair $\{x,y\}=V\setminus\{z\}$ the walkers meet at rate $w_z(1/p_x+1/p_y)$ and one of them hits $z$ at rate $w_y/p_x+w_x/p_y$; multiply both by $p_xp_y$. By \cref{lem:N}, $N=6e_3\bigl(\sum_zh_z-1\bigr)$.
+Indeed, from the pair $\{x,y\}$ the walkers meet at rate $w_z(1/p_x+1/p_y)$ and one of them hits $z$ at rate $w_y/p_x+w_x/p_y$; multiply both by $p_xp_y$. By \cref{lem:N}, $N=6e_3\bigl(\sum_zh_z-1\bigr)$.
 
 \begin{proposition}\label{prop:three}
-With $d_z=a_z+b_z$,
 \[
 \Bigl(\sum_zh_z-1\Bigr)d_1d_2d_3=S\sum_{z}\Bigl(\prod_{x\ne z}p_x\Bigr)w_z\sum_{x\ne z}w_x^2+2\,(Se_2-2e_3)\,w_1w_2w_3 .
 \]
 \end{proposition}
 
 \begin{proof}
-Write $\alpha_z=S-p_z$, so that $a_z=\alpha_zw_z$ and $d_z=\sum_xM_{zx}w_x$ with $M_{zz}=\alpha_z$ and $M_{zx}=p_x$ for $x\ne z$. Both sides are homogeneous of degree $3$ in $w$, and both are unchanged when the indices of $p$ and $w$ are permuted together. A monomial of degree $3$ in $w_1,w_2,w_3$ either omits some $w_k$ or equals $w_1w_2w_3$, so it suffices to compare the two sides at $w_2=0$ (the cases $w_1=0$ and $w_3=0$ follow by symmetry) and to compare the coefficients of $w_1w_2w_3$.
+Write $\alpha_z=S-p_z$, so that $m_z=\alpha_zw_z$ and $d_z=\sum_xT_{zx}w_x$ with $T_{zz}=\alpha_z$ and $T_{zx}=p_x$ for $x\ne z$. Both sides are homogeneous of degree $3$ in $w$, and both are unchanged when the indices of $p$ and $w$ are permuted together. A monomial of degree $3$ in $w_1,w_2,w_3$ either omits some $w_k$ or equals $w_1w_2w_3$, so it suffices to compare the two sides at $w_2=0$ (the cases $w_1=0$ and $w_3=0$ follow by symmetry) and to compare the coefficients of $w_1w_2w_3$.
 
-At $w_2=0$ we have $a_2=0$, $d_2=p_1w_1+p_3w_3$, $d_1=a_1+b_1$ with $b_1=p_3w_3$, and $d_3=a_3+b_3$ with $b_3=p_1w_1$. The left side is
+At $w_2=0$ we have $m_2=0$, $d_2=p_1w_1+p_3w_3$, $d_1=m_1+t_1$ with $t_1=p_3w_3$, and $d_3=m_3+t_3$ with $t_3=p_1w_1$. The left side is
 \[
-d_2\bigl(a_1d_3+a_3d_1-d_1d_3\bigr)=d_2\,(a_1a_3-b_1b_3)=d_2\,w_1w_3\bigl(\alpha_1\alpha_3-p_1p_3\bigr)=S\,p_2\,w_1w_3\,(p_1w_1+p_3w_3),
+d_2\bigl(m_1d_3+m_3d_1-d_1d_3\bigr)=d_2\,(m_1m_3-t_1t_3)=d_2\,w_1w_3\bigl(\alpha_1\alpha_3-p_1p_3\bigr)=S\,p_2\,w_1w_3\,(p_1w_1+p_3w_3),
 \]
 using $\alpha_1\alpha_3-p_1p_3=S^2-S(p_1+p_3)=Sp_2$. At $w_2=0$ the right side reduces to $S\bigl(p_2p_3\,w_1w_3^2+p_1p_2\,w_3w_1^2\bigr)$, which is the same.
 
-The coefficient of $w_1w_2w_3$ in $d_1d_2d_3$ is the permanent of $M$,
+The coefficient of $w_1w_2w_3$ in $d_1d_2d_3$ is the permanent of $T$,
 \[
 \alpha_1\alpha_2\alpha_3+p_2p_3\,\alpha_1+p_1p_3\,\alpha_2+p_1p_2\,\alpha_3+2e_3 ,
 \]
-and in $a_1d_2d_3$ it is $\alpha_1(\alpha_2\alpha_3+p_2p_3)$, and similarly for $z=2,3$. The coefficient on the left is therefore $2\alpha_1\alpha_2\alpha_3-2e_3=2(Se_2-e_3)-2e_3=2(Se_2-2e_3)$, since $\alpha_1\alpha_2\alpha_3=(p_2+p_3)(p_1+p_3)(p_1+p_2)=Se_2-e_3$. This is the coefficient on the right. The script \texttt{n3.py} checks the identity symbolically.
+and in $m_1d_2d_3$ it is $\alpha_1(\alpha_2\alpha_3+p_2p_3)$, and similarly for $z=2,3$. The coefficient on the left is therefore $2\alpha_1\alpha_2\alpha_3-2e_3=2(Se_2-e_3)-2e_3=2(Se_2-2e_3)$, since $\alpha_1\alpha_2\alpha_3=(p_2+p_3)(p_1+p_3)(p_1+p_2)=Se_2-e_3$. This is the coefficient on the right.
 \end{proof}
 
 \begin{proof}[Proof of \cref{thm:main} for three states]
@@ -199,15 +202,15 @@ Since $Se_2-2e_3=\sum_{x\ne y}p_x^2p_y+e_3>0$, every term on the right of \cref{
 Two states is \cref{lem:two}. On three states fix $p$ and take $w=(\eps,\eps,1)$. Every monomial on the right of \cref{prop:three} contains two distinct $w$'s, so for $0<\eps\le1$ the right side is at most $C(p)\,\eps$, with $C(p)$ depending only on $p$, while $d_1\to p_3$, $d_2\to p_3$ and $d_3\to S-p_3$ are bounded away from $0$. Hence $D\to0$ as $\eps\to0$, and $D>0$ throughout by the three-state case of \cref{thm:main}.
 \end{proof}
 
-In this family the states $1$ and $2$ form a fast block and the state $3$ is reached slowly, which is the simplest instance of the scale separation discussed in \cref{sec:remarks}. For $p=(2,3,7)$ the exact value of $D$ falls from $6.8\times10^{-3}$ at $\eps=10^{-1}$ to $8.3\times10^{-8}$ at $\eps=10^{-6}$.
+In this family the walk between the states $1$ and $2$ is fast and the state $3$ is reached slowly, the simplest case of the block relation of \cref{rem:scales}. For $p=(2,3,7)$ the exact value of $D$ falls from $6.8\times10^{-3}$ at $\eps=10^{-1}$ to $8.3\times10^{-8}$ at $\eps=10^{-6}$.
 
 \section{Four states}\label{sec:four}
 
 Relabelling the states permutes the variables $p$ and $c$, so it suffices to treat one support graph from each isomorphism class of connected graphs on four vertices: the star, the path, the $4$-cycle, the paw (a triangle with a pendant edge), the diamond ($K_4$ minus an edge) and $K_4$. For a fixed support graph $G$ we regard $p_1,\dots,p_4$ and the conductances $c_e$, $e\in E(G)$, as positive variables and set $c_e=0$ for $e\notin E(G)$.
 
-For each trap $z$ the system $A_zh_z=b_z$ of \cref{sec:setup} has three unknowns. Let $Q=\prod_z\det A_z$. By \cref{lem:N,lem:pd},
+For each trap position $z$ the system $A_zh_z=b_z$ of \cref{sec:setup} has three unknowns. Let $Q=\prod_z\det A_z$. By \cref{lem:N,lem:pd},
 \[
-R:=NQ=6\Bigl[\sum_zp_z\bigl(v_z^{\mathsf T}\operatorname{adj}(A_z)b_z\bigr)\prod_{w\ne z}\det A_w-e_3(p)\,Q\Bigr],\qquad (v_z)_{\{x,y\}}=p_xp_y,
+R:=NQ=6\Bigl[\sum_zp_z\bigl(v_z^{\mathsf T}\operatorname{adj}(A_z)b_z\bigr)\prod_{y\ne z}\det A_y-e_3(p)\,Q\Bigr],\qquad (v_z)_{\{x,y\}}=p_xp_y,
 \]
 is a polynomial with integer coefficients in the $p$'s and the $c_e$'s.
 
@@ -229,43 +232,48 @@ diamond & $62,62,89,89$ & $177{,}140$ & $6$\\
 $K_4$ & $128,128,128,128$ & $764{,}076$ & $6$\\
 \bottomrule
 \end{tabular}
-\caption{The certificate for four states. Every coefficient of every $\det A_z$ and of $R$ is positive.}\label{tab:cert}
+\caption{The polynomials of \cref{prop:cert}. By \cref{lem:pd}, $\det A_z>0$; the table shows more, namely that every coefficient of every $\det A_z$ is positive, as is every coefficient of $R$.}\label{tab:cert}
 \end{table}
 
-\begin{proof}[Proof of \cref{thm:main} for four states]
-Given an irreducible reversible chain on four states, relabel it so that its support is one of the six graphs. All variables are positive, so every monomial of $R$ is positive, and $R>0$ by \cref{prop:cert}. By \cref{lem:pd}, $Q>0$. Hence $N=R/Q>0$ and $D=N/(3S^3)>0$.
+\begin{proof}[Proof of \cref{prop:cert}]
+Expand $\det A_z$ and $\operatorname{adj}(A_z)$ for the four $3\times3$ systems and collect $R$ as a polynomial in $p_1,\dots,p_4$ and the $c_e$. The entries of $A_z$ and $b_z$ have degree $2$, so each of $p_z\,v_z^{\mathsf T}\operatorname{adj}(A_z)b_z\prod_{y\ne z}\det A_y$ and $e_3(p)Q$ is homogeneous of degree $1+2+4+2+18=3+24=27$. The expansion is carried out by the programs \texttt{n4\_cramer.py}, in SymPy~\cite{SymPy} polynomial arithmetic, and \texttt{n4\_integer.py}, in integer arithmetic on dictionaries of monomials with determinants expanded over permutations and adjugates by signed minors. Both return the term counts of \cref{tab:cert} and no coefficient below $6$.
 \end{proof}
 
-\Cref{prop:cert} is a finite computation, done by two programs with separate polynomial arithmetic and separate constructions of $R$; they share only the solver of \texttt{meeting.py}, which is used for the numerical cross-checks. The first (\texttt{n4\_cramer.py}) builds $A_z$ and $b_z$ in SymPy~\cite{SymPy} polynomial arithmetic and forms $\det A_z$ and $\operatorname{adj}(A_z)$ by the Berkowitz algorithm. The second (\texttt{n4\_integer.py}) stores polynomials as dictionaries of integer coefficients, expands determinants over permutations and adjugates by signed minors, and uses the form of $R$ displayed above. On each support graph whose labelled edge set is the same in both programs the two constructions of $R$ agree coefficient by coefficient; on the diamond, which the two programs label differently, the term counts agree. Both programs also check the identity $N=R/Q$ in exact rational arithmetic at integer points, against a direct solution of the first-step equations on ordered pairs (\texttt{meeting.py}). The degree $27$ is the sum of $4\cdot6$ for $Q$ and $3$ for $e_3$.
+\begin{proof}[Proof of \cref{thm:main} for four states]
+Given an irreducible reversible chain on four states, relabel it so that its support graph is one of the six graphs. All variables are positive, so every monomial of $R$ is positive, and $R>0$ by \cref{prop:cert}. By \cref{lem:pd}, $Q>0$. Hence $N=R/Q>0$ and $D=N/(3S^3)>0$.
+\end{proof}
 
-The positivity of $\det A_z$ in \cref{tab:cert} is not needed for the proof, which uses \cref{lem:pd}, but it is a useful check on the construction.
-
-\section{Remarks}\label{sec:remarks}
+\section{The inequality for general chains}\label{sec:remarks}
 
 \begin{conjecture}\label{conj:refined}
 For every finite irreducible reversible chain, $\Pp(\good\le\bad)\ge\frac13+\frac23\sum_x\pi(x)^3$.
 \end{conjecture}
 
-\begin{remark}[Scale separation]\label{rem:scales}
-Suppose the state space is split into blocks $B$ with weights $w_B=\pi(B)$, the chain inside each block is very fast compared with the transitions between blocks, and the chain between blocks is itself reversible. In the limit of infinite separation one expects the following: if all three points start in one block $B$, the problem is the problem inside $B$; if exactly $X$ and $Y$ start in the same block they meet before leaving it; if $X$ (or $Y$) starts in the block of $Z$ it is trapped before leaving; and otherwise only the blocks matter until two of the points share a block. If these four statements hold in the limit, then the limiting values satisfy
+The evidence for \cref{conj:refined} is \cref{thm:main} and the block relation of \cref{rem:scales}.
+
+\begin{remark}[The block relation]\label{rem:scales}
+Suppose the state space is split into blocks $B$, the chain inside each block is very fast compared with the transitions between blocks, and the chain between blocks is itself reversible, with stationary law $\pi(B)$. In the limit of infinite separation one expects the following:
+(i) if $X_0$, $Y_0$ and $Z$ lie in one block $B$, the problem is the problem inside $B$;
+(ii) if exactly $X_0$ and $Y_0$ lie in the same block, the walkers meet before leaving it;
+(iii) if $X_0$ (or $Y_0$) lies in the block of $Z$, that walker reaches the trap before leaving the block;
+(iv) otherwise only the blocks matter until two of $X$, $Y$, $Z$ are in one block.
+If (i)--(iv) hold in the limit, then the limiting values satisfy
 \[
-F=F_{\mathrm{top}}-\sum_Bw_B^3\,(1-F_B),\qquad\text{hence}\qquad D=D_{\mathrm{top}}+\sum_Bw_B^3D_B,
+F=F_{\mathrm{top}}-\sum_B\pi(B)^3\,(1-F_B),\qquad\text{hence}\qquad D=D_{\mathrm{top}}+\sum_B\pi(B)^3D_B,
 \]
-where $F=\Pp(\good\le\bad)$, the subscript ``top'' refers to the chain between blocks and $F_B,D_B$ to the chain inside $B$ with its normalised stationary law. Since $D=0$ on two states (\cref{lem:two}), the heuristic predicts that a chain built by repeatedly merging two blocks on separated time scales has $D\to0$, that is $F\to\frac13+\frac23\sum_x\pi(x)^3$, for every $\pi$. Holroyd's example~\cite[Section~6]{ABOPS} on $\{0,1\}^n$, where the $j$-th coordinate flips at a rate proportional to $\eps^{j-1}$, is the balanced binary instance with uniform $\pi$, for which the heuristic gives $F\to\frac13+\frac23\,4^{-n}$. We do not give a proof of the limit statement in general; \cref{prop:sharp} is its simplest case. Even where the limiting relation holds, it says nothing about the sign of $D$ at finite separation when the limiting value is $0$, so it gives no information on where a counterexample to \cref{conj:refined} could be.
+where $F=\Pp(\good\le\bad)$, the subscript ``top'' refers to the chain between blocks and $F_B,D_B$ to the chain inside $B$ with its normalised stationary law. This is the block relation. Since $D=0$ on two states (\cref{lem:two}), it predicts that a chain built by repeatedly merging two blocks on separated time scales has $D\to0$, that is $F\to\frac13+\frac23\sum_x\pi(x)^3$, for every $\pi$. Holroyd's example~\cite[Section~6]{ABOPS} on $\{0,1\}^m$, where the $j$-th coordinate flips at a rate proportional to $\eps^{j-1}$, is built in this way from $m$ mergings of two blocks of equal weight, with uniform $\pi$, and the block relation gives $F\to\frac13+\frac23\,4^{-m}$ for it. The block relation is proved here only for the family of \cref{prop:sharp}. Even where it holds, it says nothing about the sign of $D$ at finite separation when the limiting value is $0$, so it does not locate a possible counterexample to \cref{conj:refined}.
 \end{remark}
 
 \begin{remark}[Conventions]\label{rem:conv}
-The event in \cref{conj:abops} counts a triple start $X_0=Y_0=Z_0$ as a meeting. In continuous time two of the walkers almost surely never jump at the same moment, so this is the only place where the convention enters, and $\Pp(\good<\bad)=\Pp(\good\le\bad)-\sum_x\pi(x)^3$. Thus \eqref{eq:refined} is equivalent to $\Pp(\good<\bad)\ge\frac13\bigl(1-\sum_x\pi(x)^3\bigr)$. On two states this holds with equality (\cref{lem:two}), so with the strict event the constant $1/3$ fails for every chain on two states. For the uniform walk on the $4$-cycle (unit conductances, uniform $\pi$) one has $\Pp(\good\le\bad)=3/7$ and $\Pp(\good<\bad)=41/112$; on $K_4$ the two values are $7/16$ and $3/8$. For walkers moving synchronously in discrete time the question changes: for simple random walk on the $4$-cycle the probability is $5/16$, below $1/3$, because walkers at odd distance never meet. These values are exact and are reproduced by \texttt{meeting.py}.
+The event in \cref{conj:abops} counts a start with $X_0=Y_0=Z$ as a meeting. In continuous time the two walkers almost surely never jump at the same moment, so this is the only place where the convention enters, and $\Pp(\good<\bad)=\Pp(\good\le\bad)-\sum_x\pi(x)^3$. Thus \eqref{eq:refined} is equivalent to $\Pp(\good<\bad)\ge\frac13\bigl(1-\sum_x\pi(x)^3\bigr)$. With $\{\good<\bad\}$ the bound $1/3$ fails on every chain on two states, where $\Pp(\good<\bad)=\frac13\bigl(1-\sum_x\pi(x)^3\bigr)$ by \cref{lem:two}. For the uniform walk on the $4$-cycle (unit conductances, uniform $\pi$) one has $\Pp(\good\le\bad)=3/7$ and $\Pp(\good<\bad)=41/112$; on $K_4$ the two values are $7/16$ and $3/8$. For walks moving synchronously in discrete time the question changes: for simple random walk on the $4$-cycle, with a meeting at the moment a walker reaches the trap counted as a meeting, the probability is $5/16$, below $1/3$, because walkers at odd distance never meet.
 \end{remark}
 
 \begin{remark}[Beyond four states]
-The method of \cref{sec:four} extends in principle to $n=5$, where each system $A_z$ has six unknowns and there are twenty-one connected support graphs, and the degree of $Q$ grows from $24$ to $60$. We do not see how to extend the explicit computations to all $n$; the triple form~\eqref{eq:triples} and the composition rule of \cref{rem:scales} suggest looking for a monotonicity under merging of states.
+The method of \cref{sec:four} extends in principle to $n=5$, where each system $A_z$ has six unknowns, there are twenty-one connected support graphs, and the degree of $Q$ grows from $24$ to $60$. The number of terms of $R$ grows quickly with $n$, and the computation gives no argument uniform in $n$; the triple form~\eqref{eq:triples} and the block relation suggest looking for a monotonicity under merging of states.
 \end{remark}
 
 \section*{Acknowledgments and funding}
 The research presented in this paper was supported by the European Research Council (ERC) under the European Union's Horizon Europe research and innovation programme (grant agreement No.~101041711), by the Simons Foundation as part of the Collaboration on the Mathematical and Scientific Foundations of Deep Learning, by Heights Labs, by Convex Nexus Capital, by the Israel Science Foundation (grant number 2258/19), and by the Israel Science Foundation (ISF Grant 4101/25). Computational resources were provided in part by Google Cloud through its education credits programme (credit 530550103).
-
-The problem, the conjectured constant $1/3$ and the results for transitive chains are due to Louigi Addario-Berry, Roberto I. Oliveira, Yuval Peres and Perla Sousi~\cite{ABOPS}, and the example showing that $1/3$ would be sharp is due to Alexander Holroyd~\cite[Section~6]{ABOPS}. The refined inequality~\eqref{eq:refined} strengthens their conjecture by removing the triple start, and its proof for at most four states uses only first-step equations, the network description of reversible chains and Cramer's rule.
 
 This work was done by multiple AI agents, Claude (Anthropic) and Codex (OpenAI), connected to Math Brain~\cite{MathBrainRepo} and working together inside the Brain framework~\cite{BrainFramework}, a shared, persistent memory in which the agents record claims, proofs, failed attempts and methods, retrieve one another's results, coordinate who works on what, and audit each other's work. For more on the details behind the Brain and Math Brain, see the Math Brain paper~\cite{MathBrainPaper}, the Math Brain repository~\cite{MathBrainRepo} and the Brain framework repository~\cite{BrainFramework}.
 
@@ -273,38 +281,48 @@ This work was done by multiple AI agents, Claude (Anthropic) and Codex (OpenAI),
 The author holds equity in Heights Labs and in Convex Nexus Capital and has a management role at Convex Nexus Capital. These entities are included in the funding declaration above.
 
 \section*{Code and data availability}
-The \LaTeX\ source and the programs that check \cref{prop:three,prop:cert}, \cref{tab:cert} and the values in \cref{sec:three} and \cref{rem:conv} are at \url{https://github.com/yspennstate/meeting-before-frozen-trap}. The paper is part of the Math Brain project, whose public repository is \url{https://github.com/yspennstate/math-brain-public}~\cite{MathBrainRepo}.
+The \LaTeX\ source and the programs for \cref{prop:three,prop:cert}, \cref{tab:cert} and the values in \cref{sec:three} and \cref{rem:conv} are at \url{https://github.com/yspennstate/meeting-before-frozen-trap}. The paper is part of the Math Brain project, whose public repository is \url{https://github.com/yspennstate/math-brain-public}~\cite{MathBrainRepo}.
 
 \section*{Declaration of generative AI and AI-assisted technologies}
-The proofs and writing were produced by AI systems in the author-directed Math Brain project: Claude (Anthropic) found the refined inequality, the three-state proof and the four-state certificate, Codex (OpenAI) rebuilt the four-state certificate independently, and Claude checked the proofs against the sources and wrote the text. The problem and the constant $1/3$ are those of Addario-Berry, Oliveira, Peres and Sousi, and the sharpness example is Holroyd's; the refined inequality, the triple form and the proofs for at most four states are new. The author selected the problem and directed the work, did not carry out the mathematics or the writing, and is responsible for submission. The checks are internal verification, not peer review or formalization.
+The proofs and writing were produced by AI systems in the author-directed Math Brain project: Claude (Anthropic) found inequality~\eqref{eq:refined}, the three-state proof and the four-state polynomial identity, Codex (OpenAI) rebuilt the four-state computation independently, and Claude checked the proofs against the sources and wrote the text. The problem and the constant $1/3$ are those of Addario-Berry, Oliveira, Peres and Sousi~\cite{ABOPS}, and the sharpness example is Holroyd's~\cite[Section~6]{ABOPS}; inequality~\eqref{eq:refined}, the triple form~\eqref{eq:triples} and the proofs for three and four states are new. The author selected the problem and directed the work, did not carry out the mathematics or the writing, and is responsible for submission.
 
 \appendix
 \section{Notation}\label{app:notation}
 
 \begin{center}
 \small
-\begin{tabular}{lp{0.5\textwidth}l}
+\begin{tabular}{lp{0.52\textwidth}l}
 \toprule
 symbol & meaning & first used\\
 \midrule
 $\pi$ & stationary law of the chain & \cref{sec:intro}\\
+$X,Y$; $Z$ & the walkers; the trap & \cref{sec:intro}\\
 $\good,\bad$ & first meeting time of $X,Y$; first time $X$ or $Y$ is at $Z$ & \cref{sec:intro}\\
+$\delta$ & a positive number, in Holroyd's example & \cref{sec:intro}\\
+$n$ & number of states & \cref{sec:intro}\\
 $D(P)$ & $\Pp(\good\le\bad)-\frac13-\frac23\sum_x\pi(x)^3$ & \eqref{eq:refined}\\
-$h_z(x,y)$ & probability that $X,Y$ from $x,y$ meet before either hits $z$ & \eqref{eq:triples}\\
-$p_x$, $S$ & unnormalised weights, $\pi(x)=p_x/S$, $S=\sum_xp_x$ & \cref{sec:setup}\\
+$h_z(x,y)$ & $\Pp_{x,y}(\good<\bad)$ with the trap at $z$ & \eqref{eq:triples}\\
+$V$ & state space $\{1,\dots,n\}$ & \cref{sec:setup}\\
+$p_x$, $S$ & weights, $\pi(x)=p_x/S$, $S=\sum_xp_x$ & \cref{sec:setup}\\
 $c_{xy}$ & conductance of the edge $\{x,y\}$; rate $x\to y$ is $c_{xy}/p_x$ & \cref{sec:setup}\\
-$e_2,e_3$ & elementary symmetric polynomials of degree $2$ and $3$ in $p$ & \cref{sec:setup}, \cref{sec:three}\\
+$e_3$ & $\sum_{x<y<z}p_xp_yp_z$ & \cref{sec:setup}\\
+$\Pp_{x,y}$ & law of the walkers started at $X_0=x$, $Y_0=y$ & \cref{sec:setup}\\
 $N$ & $3S^3D(P)$ & \cref{lem:N}\\
+$s_{21}$ & $\sum_{x\ne y}p_x^2p_y$ & proof of \cref{lem:N}\\
 $A_z,b_z$ & first-step system for the pairs avoiding $z$, multiplied by $p_xp_y$ & \cref{sec:setup}\\
-$\kappa_{\{x,y\}}$ & killing rate of the pair $\{x,y\}$ in $A_z$ & \cref{lem:pd}\\
+$\kappa_\sigma$ & diagonal of $A_z$ minus the Laplacian part, for a pair $\sigma$ & \cref{lem:pd}\\
+$\gamma_{\sigma\tau}$ & $-(A_z)_{\sigma\tau}$ for pairs $\sigma\ne\tau$ & \cref{lem:pd}\\
 $w_z$ & on three states, conductance of the edge opposite $z$ & \cref{sec:three}\\
-$a_z,b_z,d_z$ & on three states, $h_z=a_z/d_z$ with $d_z=a_z+b_z$ & \cref{sec:three}\\
-$\alpha_z$, $M$ & $S-p_z$; the matrix with $d_z=\sum_xM_{zx}w_x$ & proof of \cref{prop:three}\\
+$e_2$ & on three states, $p_1p_2+p_1p_3+p_2p_3$ & \cref{sec:three}\\
+$m_z,t_z,d_z$ & on three states, $h_z=m_z/d_z$ with $d_z=m_z+t_z$ & \cref{sec:three}\\
+$\alpha_z$, $T$ & $S-p_z$; the matrix with $d_z=\sum_xT_{zx}w_x$ & proof of \cref{prop:three}\\
+$\eps$, $C(p)$ & small parameter of the family $w=(\eps,\eps,1)$; a constant & proof of \cref{prop:sharp}\\
+$G$, $E(G)$, $c_e$ & support graph, its edges, conductance of the edge $e$ & \cref{sec:four}\\
 $Q$, $R$ & $\prod_z\det A_z$ and $NQ$ on four states & \cref{sec:four}\\
 $v_z$ & the vector $(p_xp_y)_{\{x,y\}}$ & \cref{sec:four}\\
-$V$ & state space $\{1,\dots,n\}$ & \cref{sec:setup}\\
-$F$ & $\Pp(\good\le\bad)$ & \cref{rem:scales}\\
-$\eps$ & small parameter in a family of chains & proof of \cref{prop:sharp}\\
+$F$, $F_B$, $F_{\mathrm{top}}$ & $\Pp(\good\le\bad)$; the same inside a block $B$ and between blocks & \cref{rem:scales}\\
+$D_B$, $D_{\mathrm{top}}$ & $D$ inside a block $B$ and between blocks & \cref{rem:scales}\\
+$m$ & dimension of the cube in Holroyd's example & \cref{rem:scales}\\
 \bottomrule
 \end{tabular}
 \end{center}
@@ -313,11 +331,15 @@ $\eps$ & small parameter in a family of chains & proof of \cref{prop:sharp}\\
 
 \bibitem{ABOPS} L.~Addario-Berry, R.~I.~Oliveira, Y.~Peres and P.~Sousi, Random walks colliding before getting trapped, \emph{Electron. J. Probab.} \textbf{21} (2016), Paper No.~42, 19~pp., doi:10.1214/16-EJP4414; arXiv:1506.07845.
 
-\bibitem{LP} D.~A.~Levin and Y.~Peres, \emph{Markov Chains and Mixing Times}, second edition, American Mathematical Society, Providence, RI, 2017.
-
 \bibitem{AF} D.~Aldous and J.~A.~Fill, \emph{Reversible Markov Chains and Random Walks on Graphs}, unfinished monograph, 2002, recompiled 2014, \url{https://www.stat.berkeley.edu/~aldous/RWG/book.html}.
 
-\bibitem{SymPy} A.~Meurer et al., SymPy: symbolic computing in Python, \emph{PeerJ Comput. Sci.} \textbf{3} (2017), e103, doi:10.7717/peerj-cs.103.
+\bibitem{LP} D.~A.~Levin and Y.~Peres, \emph{Markov Chains and Mixing Times}, second edition, American Mathematical Society, Providence, RI, 2017.
+
+\bibitem{Oliveira} R.~I.~Oliveira, On the coalescence time of reversible random walks, \emph{Trans. Amer. Math. Soc.} \textbf{364} (2012), 2109--2128, doi:10.1090/S0002-9947-2011-05523-6.
+
+\bibitem{SousiWinkler} P.~Sousi and P.~Winkler, Mixing times and moving targets, \emph{Combin. Probab. Comput.} \textbf{23} (2014), 460--476, doi:10.1017/S0963548313000539.
+
+\bibitem{SymPy} A.~Meurer, C.~P.~Smith, M.~Paprocki, O.~\v{C}ert\'{\i}k, S.~B.~Kirpichev, M.~Rocklin, A.~Kumar, S.~Ivanov, J.~K.~Moore, S.~Singh, T.~Rathnayake, S.~Vig, B.~E.~Granger, R.~P.~Muller, F.~Bonazzi, H.~Gupta, S.~Vats, F.~Johansson, F.~Pedregosa, M.~J.~Curry, A.~R.~Terrel, \v{S}.~Rou\v{c}ka, A.~Saboo, I.~Fernando, S.~Kulal, R.~Cimrman and A.~Scopatz, SymPy: symbolic computing in Python, \emph{PeerJ Comput. Sci.} \textbf{3} (2017), e103, doi:10.7717/peerj-cs.103.
 
 \bibitem{MathBrainRepo} Y.~Shmalo, \emph{Math Brain: public snapshot, code and tests}, 2026, \url{https://github.com/yspennstate/math-brain-public}.
 
