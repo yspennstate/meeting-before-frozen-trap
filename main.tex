@@ -53,7 +53,7 @@
 \thispagestyle{fancy}
 
 \begin{abstract}
-Let $X$ and $Y$ be independent rate-one random walks on a finite reversible Markov chain and $Z$ a trap that does not move, all three started independently from the stationary law $\pi$. Addario-Berry, Oliveira, Peres and Sousi conjectured that $X$ and $Y$ meet before either hits $Z$ with probability at least $1/3$. We prove that on three and four states, conditionally on $X_0$, $Y_0$ and $Z$ not all being equal, $X$ and $Y$ meet first with probability greater than $1/3$, which proves the conjecture on four states. On three states the probability of meeting first, minus $\frac13+\frac23\sum_x\pi(x)^3$, has a closed form with infimum $0$ over chains with given $\pi$. On four states this difference, times a positive polynomial, has positive coefficients as a polynomial in the weights and conductances of the chain, by an exact computer expansion. We conjecture this conditional bound for every finite reversible chain.
+Let $X$ and $Y$ be independent rate-one random walks on a finite reversible Markov chain and $Z$ a fixed trap, all three started independently from the stationary law $\pi$. Addario-Berry, Oliveira, Peres and Sousi conjectured that $X$ and $Y$ meet before either hits $Z$ with probability at least $1/3$. We prove that on three and four states, conditionally on $X_0$, $Y_0$ and $Z$ not all being equal, $X$ and $Y$ meet first with probability greater than $1/3$, which proves the conjecture on four states. On three states the probability of meeting first, minus $\frac13+\frac23\sum_x\pi(x)^3$, has a closed form with infimum $0$ over chains with given $\pi$. On four states this difference, times a positive polynomial, is a polynomial with positive coefficients in the state weights $p_x$ and conductances $c_{xy}$ (jump rates $c_{xy}/p_x$), by an exact computer expansion. We conjecture this conditional bound for every finite reversible chain.
 \end{abstract}
 
 \noindent\textit{Keywords:} reversible Markov chains, random walks, meeting times, hitting times, first-step equations.\\
@@ -65,7 +65,7 @@ Following~\cite{ABOPS}, let $P$ be the transition matrix of a finite, irreducibl
 \[
 \good=\inf\{t\ge0:X_t=Y_t\},\qquad \bad=\inf\{t\ge0:X_t=Z \text{ or } Y_t=Z\}.
 \]
-Addario-Berry, Oliveira, Peres and Sousi~\cite{ABOPS} asked how likely it is that $X$ and $Y$ meet before either of them reaches the trap, and stated the following conjecture~\cite[Conjecture~1.5]{ABOPS}.
+Addario-Berry, Oliveira, Peres and Sousi~\cite{ABOPS} asked how likely it is that $X$ and $Y$ meet before either of them hits the trap, and stated the following conjecture~\cite[Conjecture~1.5]{ABOPS}.
 
 \begin{conjecture}[Addario-Berry, Oliveira, Peres and Sousi~\cite{ABOPS}]\label{conj:abops}
 For every finite irreducible reversible chain, $\Pp(\good\le\bad)\ge1/3$.
@@ -73,15 +73,13 @@ For every finite irreducible reversible chain, $\Pp(\good\le\bad)\ge1/3$.
 
 In~\cite{ABOPS} the conjecture is motivated by bounds on the meeting time of two walkers in terms of hitting times of single states~\cite[Chapter~14]{AF} and~\cite{Oliveira,SousiWinkler}. Oliveira~\cite{Oliveira} proved that on every reversible chain the expected time for a system of coalescing walkers to merge into one is at most a constant multiple of the largest expected hitting time of a state; his proof bounds the time a reversible chain takes to meet a deterministic trajectory. Sousi and Winkler~\cite{SousiWinkler} compared hitting times of moving and of stationary targets, and showed that the largest hitting times of the two kinds agree on tori but can differ on a transitive graph.
 
-A second motivation in~\cite{ABOPS} is a symmetry: if the trap also moved at rate $1$, then $X$, $Y$ and $Z$ would be exchangeable and $\Pp(\good\le\bad)\ge1/3$ would follow. With the trap frozen, the pair $\{X,Y\}$ is not exchangeable with the pairs $\{X,Z\}$ and $\{Y,Z\}$. For transitive chains \cite[Theorem~1.2]{ABOPS} gives $\Pp(\good<\bad)\ge1/4$, by a relation between meeting times and hitting times of single states that holds when the chain is transitive, and an example of Alexander Holroyd~\cite[Section~6]{ABOPS} gives transitive chains with $\Pp(\good\le\bad)\le1/3+\delta$ for every $\delta>0$. Without reversibility \cref{conj:abops} fails~\cite[Remark~1.6]{ABOPS}. Addario-Berry, Oliveira, Peres and Sousi note that a positive lower bound for $\Pp(\good\le\bad)$ uniform over all finite irreducible reversible chains would be new~\cite[Section~1]{ABOPS}.
-
-On a chain with $n$ states the walkers meet at time $0$ when $X_0=Y_0$, so
+A second motivation in~\cite{ABOPS} is a symmetry. If the trap moved at rate $1$, the three processes $X$, $Y$ and $Z$ would be exchangeable, and the first of the three pairs to meet would be $\{X,Y\}$ with probability $1/3$. With the trap frozen, $\{X,Y\}$ is not exchangeable with $\{X,Z\}$ and $\{Y,Z\}$, and the argument gives no bound. For transitive chains, Addario-Berry, Oliveira, Peres and Sousi proved $\Pp(\good<\bad)\ge1/4$~\cite[Theorem~1.2]{ABOPS}, by a relation between meeting times and hitting times of single states that holds when the chain is transitive. Holroyd's example~\cite[Section~6]{ABOPS} gives transitive chains with $\Pp(\good\le\bad)\le1/3+\delta$ for every $\delta>0$. Without reversibility the conjecture fails~\cite[Remark~1.6]{ABOPS}. Addario-Berry, Oliveira, Peres and Sousi note that a positive lower bound uniform over all finite irreducible reversible chains would be new~\cite[Section~1]{ABOPS}. The walkers meet at time $0$ when $X_0=Y_0$, so on a chain with $n$ states
 \[
-\Pp(\good\le\bad)\ \ge\ \sum_x\pi(x)^2\ \ge\ \frac1n ,
+\Pp(\good\le\bad)\ \ge\ \sum_x\pi(x)^2\ \ge\ \frac1n .
 \]
-which gives \cref{conj:abops} on at most three states and only $1/4$ at the uniform law on four states.
+This settles at most three states and gives only $1/4$ for the uniform law on four.
 
-The event $\{X_0=Y_0=Z\}$ has probability $\sum_x\pi(x)^3$ and lies in $\{\good\le\bad\}$ for every chain. On the complement of this event we compare the conditional probability of $\{\good\le\bad\}$ with $1/3$. Put
+The event $\{X_0=Y_0=Z\}$ has probability $\sum_x\pi(x)^3$ and lies in $\{\good\le\bad\}$. Outside it we ask for the probability $1/3$ conditionally. Put
 \[
 D(P):=\Pp(\good\le\bad)-\frac13-\frac23\sum_x\pi(x)^3 .
 \]
@@ -93,7 +91,7 @@ that is, $\Pp(\good\le\bad\mid X_0,Y_0,Z\text{ not all equal})\ge1/3$. Inequalit
 \begin{equation}\label{eq:triples}
 \sum_{\{x,y,z\}}\pi(x)\pi(y)\pi(z)\bigl[h_z(x,y)+h_x(y,z)+h_y(z,x)\bigr]\ \ge\ \sum_{\{x,y,z\}}\pi(x)\pi(y)\pi(z),
 \end{equation}
-both sums running over unordered triples of distinct states. If the trap also moved, the three events whose probabilities stand in the bracket would be disjoint and exhaustive, and the bracket would equal $1$. Inequality~\eqref{eq:triples} says that with the trap frozen the brackets, weighted by $\pi(x)\pi(y)\pi(z)$, add up to at least the total weight.
+both sums running over unordered triples of distinct states. If the trap moved, each bracket would be the sum of the probabilities of three disjoint and exhaustive events, and would equal $1$. Inequality~\eqref{eq:triples} asks that, with the trap frozen, the brackets weighted by $\pi(x)\pi(y)\pi(z)$ still average at least $1$.
 
 \begin{theorem}\label{thm:main}
 For every irreducible reversible chain $P$ on three or four states, $D(P)>0$. In particular \cref{conj:abops} holds, with strict inequality, on four states.
@@ -105,7 +103,7 @@ On two states $D=0$ for every chain. On three states, for every $\pi$ with posit
 
 So on three states the bound $\frac13+\frac23\sum_x\pi(x)^3$ cannot be raised at any $\pi$, while \cref{conj:abops} is far from sharp there: the smallest value of $\frac13+\frac23\sum_x\pi(x)^3$ over $\pi$ on three states is $11/27$. \Cref{conj:abops} is open on five or more states.
 
-The proof of \cref{thm:main} rests on~\eqref{eq:triples}. On three states there is a single triple and the bracket has a closed form (\cref{sec:three}). On four states we solve the first-step equations by Cramer's rule and show that $D$, multiplied by a positive polynomial, is a polynomial with positive coefficients in the weights $p_x$ and conductances $c_{xy}$, the chain jumping from $x$ to $y$ at rate $c_{xy}/p_x$ (\cref{sec:setup,sec:four}). The expansion is exact and is carried out by computer (\cref{prop:cert}).
+The proof of \cref{thm:main} rests on~\eqref{eq:triples}. We write the chain through state weights $p_x$ and edge conductances $c_{xy}$, the chain jumping from $x$ to $y$ at rate $c_{xy}/p_x$ (\cref{sec:setup}). On three states there is a single triple, and $\sum_zh_z-1$ is a ratio whose numerator is a sum of positive terms (\cref{prop:three}). On four states the first-step equations are solved by Cramer's rule, and $D$, multiplied by a positive polynomial, becomes a polynomial $R$ in the $p_x$ and $c_{xy}$. Every coefficient of $R$ is positive, for each of the six connected support graphs; on $K_4$, $R$ has $764{,}076$ terms (\cref{sec:four}, \cref{prop:cert}). The expansion is exact and is carried out by computer. On five states each of the five positions of the trap gives a system of $\binom42=6$ first-step equations in place of $3$, with entries of degree $2$, so each determinant has degree $12$ in place of $6$.
 
 Whether~\eqref{eq:refined} holds for all finite reversible chains is open (\cref{conj:refined}). In the family of chains on three states used for \cref{prop:sharp}, two states communicate at rates of order $1$, the third is reached at rates of order $\eps$, and $D\to0$ as $\eps\to0$. \Cref{rem:scales} describes the limit expected for chains built in this way from blocks of states on widely separated time scales; Holroyd's example is such a chain. With $\{\good<\bad\}$ in place of $\{\good\le\bad\}$ the bound $1/3$ fails on every chain on two states, and for walkers moving synchronously in discrete time it fails on the $4$-cycle (\cref{rem:conv}).
 
@@ -169,7 +167,7 @@ Hence $A_z$ is the Laplacian of a weighted graph on the pairs, plus the diagonal
 \[
 u^{\mathsf T}A_zu=\sum_{\{\sigma,\tau\}}\gamma_{\sigma\tau}\,(u_\sigma-u_\tau)^2+\sum_\sigma\kappa_\sigma u_\sigma^2 .
 \]
-The pairs $\sigma,\tau$ with $\gamma_{\sigma\tau}>0$ are those between which the pair of walkers moves in one jump while neither walker enters the trap and the walkers do not meet, and $\kappa_\sigma>0$ exactly when from $\sigma$ the walkers can meet or reach $z$ in one jump. Since the chain is irreducible, from a pair $\{x,y\}$ we can move $X$ alone along a path to $z$ with $Y$ fixed at $y$; the pair just before $X$ first reaches $y$ or $z$ is a pair $\{x',y\}$ with $c_{x'y}>0$ or $c_{x'z}>0$, hence with $\kappa_{\{x',y\}}>0$. So every connected component of the graph on the pairs contains a pair with $\kappa>0$. If $u^{\mathsf T}A_zu=0$ then $u$ is constant on each component and vanishes where $\kappa>0$, so $u=0$.
+The pairs $\sigma,\tau$ with $\gamma_{\sigma\tau}>0$ are those between which the pair of walkers moves in one jump while neither walker hits the trap and the walkers do not meet, and $\kappa_\sigma>0$ exactly when from $\sigma$ the walkers can meet or reach $z$ in one jump. Since the chain is irreducible, from a pair $\{x,y\}$ we can move $X$ alone along a path to $z$ with $Y$ fixed at $y$; the pair just before $X$ first reaches $y$ or $z$ is a pair $\{x',y\}$ with $c_{x'y}>0$ or $c_{x'z}>0$, hence with $\kappa_{\{x',y\}}>0$. So every connected component of the graph on the pairs contains a pair with $\kappa>0$. If $u^{\mathsf T}A_zu=0$ then $u$ is constant on each component and vanishes where $\kappa>0$, so $u=0$.
 \end{proof}
 
 \section{Three states}\label{sec:three}
@@ -258,19 +256,19 @@ Given an irreducible reversible chain on four states, relabel it so that its sup
 For every finite irreducible reversible chain, $\Pp(\good\le\bad)\ge\frac13+\frac23\sum_x\pi(x)^3$.
 \end{conjecture}
 
-By \cref{lem:two} and \cref{thm:main}, \cref{conj:refined} holds on at most four states, and the block relation stated in \cref{rem:scales}, where it holds, gives $D\to0$ for chains built by repeatedly merging two blocks on widely separated time scales.
+By \cref{lem:two} and \cref{thm:main}, \cref{conj:refined} holds on at most four states.
 
 \begin{remark}[The block relation]\label{rem:scales}
 Suppose the state space is split into blocks $B$, the chain inside each block is very fast compared with the transitions between blocks, and the chain between blocks is itself reversible, with stationary law $\pi(B)=\sum_{x\in B}\pi(x)$. In the limit of infinite separation one expects the following:
 (i) if $X_0$, $Y_0$ and $Z$ lie in one block $B$, the problem is the problem inside the block $B$;
 (ii) if exactly $X_0$ and $Y_0$ lie in the same block, the walkers meet before leaving it;
-(iii) if $X_0$ (or $Y_0$) lies in the block of $Z$, that walker reaches the trap before leaving the block;
+(iii) if $X_0$ (or $Y_0$) lies in the block of $Z$, that walker hits the trap before leaving the block;
 (iv) otherwise only the blocks matter until two of $X$, $Y$, $Z$ are in one block.
 If (i)--(iv) hold in the limit, then the limiting values satisfy
 \[
 F=F_{\mathrm{top}}-\sum_B\pi(B)^3\,(1-F_B),\qquad\text{hence}\qquad D=D_{\mathrm{top}}+\sum_B\pi(B)^3D_B,
 \]
-where $F=\Pp(\good\le\bad)$, the subscript ``top'' refers to the chain between blocks and $F_B,D_B$ to the chain inside the block $B$ with its normalised stationary law. This is the block relation. Since $D=0$ on two states (\cref{lem:two}), it predicts that a chain built by repeatedly merging two blocks on separated time scales has $D\to0$, that is $F\to\frac13+\frac23\sum_x\pi(x)^3$, for every $\pi$. Holroyd's example~\cite[Section~6]{ABOPS} on $\{0,1\}^\ell$, where the $j$-th coordinate flips at a rate proportional to $\eps^{j-1}$, is built in this way from $\ell$ mergings of two blocks of equal weight, with uniform $\pi$. For these chains \cite[Section~6]{ABOPS} proves $\Pp(\good<\bad)<\frac13+\delta$ once $\eps$ is small enough in terms of $\delta$ and $\ell$; since $\{\good=\bad\}=\{X_0=Y_0=Z\}$ has probability $\sum_x\pi(x)^3=4^{-\ell}$, this gives $\Pp(\good\le\bad)\le\frac13+\delta$ for $\ell$ large, the form stated in the introduction of~\cite{ABOPS}. The block relation gives the limit $F\to\frac13+\frac23\,4^{-\ell}$. The block relation holds for the family of \cref{prop:sharp} and is open in general. Even where it holds, it says nothing about the sign of $D$ at finite separation when the limiting value is $0$, so it does not locate a possible counterexample to \cref{conj:refined}.
+where $F=\Pp(\good\le\bad)$, the subscript ``top'' refers to the chain between blocks and $F_B,D_B$ to the chain inside the block $B$ with its normalised stationary law. This is the block relation. A chain is built by iterated two-block merging if it is a single state, or if its states split into two blocks, each built in this way, with the transitions inside the blocks faster by a factor tending to infinity than those between them. Since $D=0$ on two states (\cref{lem:two}), the block relation predicts that such a chain has $D\to0$, that is $F\to\frac13+\frac23\sum_x\pi(x)^3$, for every $\pi$. Holroyd's example~\cite[Section~6]{ABOPS} on $\{0,1\}^\ell$, where the $j$-th coordinate flips at a rate proportional to $\eps^{j-1}$, is built in this way, with $\ell$ levels of merging into two blocks of equal weight, with uniform $\pi$. For these chains \cite[Section~6]{ABOPS} proves $\Pp(\good<\bad)<\frac13+\delta$ once $\eps$ is small enough in terms of $\delta$ and $\ell$; since $\{\good=\bad\}=\{X_0=Y_0=Z\}$ has probability $\sum_x\pi(x)^3=4^{-\ell}$, this gives $\Pp(\good\le\bad)\le\frac13+\delta$ for $\ell$ large, the form stated in the introduction of~\cite{ABOPS}. The block relation gives the limit $F\to\frac13+\frac23\,4^{-\ell}$. The block relation holds for the family of \cref{prop:sharp} and is open in general. Even where it holds, it says nothing about the sign of $D$ at finite separation when the limiting value is $0$, so it does not locate a possible counterexample to \cref{conj:refined}.
 \end{remark}
 
 \begin{remark}[Conventions]\label{rem:conv}
@@ -303,7 +301,7 @@ symbol & meaning & first used\\
 $\pi$ & stationary law of the chain & \cref{sec:intro}\\
 $\Pp$, $\Pp_{x,y}$ & probability for $X_0,Y_0,Z$ drawn independently from $\pi$; law of the walkers started at $X_0=x$, $Y_0=y$ & \cref{sec:intro}; \cref{sec:setup}\\
 $X,Y$; $Z$ & the walkers; the trap & \cref{sec:intro}\\
-$\good,\bad$ & first meeting time of $X,Y$; first time $X$ or $Y$ is at $Z$ & \cref{sec:intro}\\
+$\good,\bad$ & first meeting time of $X,Y$; first time $X$ or $Y$ hits $Z$ & \cref{sec:intro}\\
 $\delta$ & a positive number, in Holroyd's example & \cref{sec:intro}\\
 $n$ & number of states & \cref{sec:intro}\\
 $D(P)$ & $\Pp(\good\le\bad)-\frac13-\frac23\sum_x\pi(x)^3$ & \cref{sec:intro}, \eqref{eq:refined}\\
