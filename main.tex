@@ -53,7 +53,7 @@
 \thispagestyle{fancy}
 
 \begin{abstract}
-Let $X$ and $Y$ be independent rate-one random walks on a finite reversible Markov chain and $Z$ a trap that does not move, all three started independently from the stationary law $\pi$. Addario-Berry, Oliveira, Peres and Sousi conjectured that $X$ and $Y$ meet before either hits $Z$ with probability at least $1/3$. We prove that on three and four states, unless $X_0$, $Y_0$ and $Z$ coincide, $X$ and $Y$ meet first with conditional probability greater than $1/3$, which proves the conjecture on four states. On three states the probability of meeting first, minus $\frac13+\frac23\sum_x\pi(x)^3$, has a closed form with infimum $0$ over the chains with a given $\pi$. On four states this difference, times a positive polynomial, has positive coefficients as a polynomial in the weights and conductances of the chain, by an exact expansion done by computer. We conjecture this conditional bound for every finite reversible chain.
+Let $X$ and $Y$ be independent rate-one random walks on a finite reversible Markov chain and $Z$ a trap that does not move, all three started independently from the stationary law $\pi$. Addario-Berry, Oliveira, Peres and Sousi conjectured that $X$ and $Y$ meet before either hits $Z$ with probability at least $1/3$. We prove that on three and four states, conditionally on $X_0$, $Y_0$ and $Z$ not all being equal, $X$ and $Y$ meet first with probability greater than $1/3$, which proves the conjecture on four states. On three states the probability of meeting first, minus $\frac13+\frac23\sum_x\pi(x)^3$, has a closed form with infimum $0$ over the chains with a given $\pi$. On four states this difference, times a positive polynomial, has positive coefficients as a polynomial in the weights and conductances of the chain, by an exact expansion done by computer. We conjecture this conditional bound for every finite reversible chain.
 \end{abstract}
 
 \noindent\textit{Keywords:} reversible Markov chains, random walks, meeting times, hitting times, first-step equations.\\
@@ -258,7 +258,7 @@ Given an irreducible reversible chain on four states, relabel it so that its sup
 For every finite irreducible reversible chain, $\Pp(\good\le\bad)\ge\frac13+\frac23\sum_x\pi(x)^3$.
 \end{conjecture}
 
-By \cref{lem:two} and \cref{thm:main}, \cref{conj:refined} holds on at most four states, and the block relation of \cref{rem:scales}, where it holds, gives $D\to0$ for chains built from blocks on widely separated time scales.
+By \cref{lem:two} and \cref{thm:main}, \cref{conj:refined} holds on at most four states, and the block relation stated in \cref{rem:scales}, where it holds, gives $D\to0$ for chains built by repeatedly merging two blocks on widely separated time scales.
 
 \begin{remark}[The block relation]\label{rem:scales}
 Suppose the state space is split into blocks $B$, the chain inside each block is very fast compared with the transitions between blocks, and the chain between blocks is itself reversible, with stationary law $\pi(B)=\sum_{x\in B}\pi(x)$. In the limit of infinite separation one expects the following:
