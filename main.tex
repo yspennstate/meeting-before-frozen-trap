@@ -65,7 +65,7 @@ Following~\cite{ABOPS}, let $P$ be the transition matrix of a finite, irreducibl
 \[
 \good=\inf\{t\ge0:X_t=Y_t\},\qquad \bad=\inf\{t\ge0:X_t=Z \text{ or } Y_t=Z\}.
 \]
-Addario-Berry, Oliveira, Peres and Sousi~\cite{ABOPS} asked how likely it is that $X$ and $Y$ meet before either of them hits the trap, and stated the following conjecture~\cite[Conjecture~1.6]{ABOPS}.
+Addario-Berry, Oliveira, Peres and Sousi~\cite{ABOPS} asked how likely it is that $X$ and $Y$ meet before either of them hits the trap, and stated the following conjecture~\cite[Conjecture~1.5]{ABOPS}.
 
 \begin{conjecture}[Addario-Berry, Oliveira, Peres and Sousi~\cite{ABOPS}]\label{conj:abops}
 For every finite irreducible reversible chain, $\Pp(\good\le\bad)\ge1/3$.
@@ -73,7 +73,7 @@ For every finite irreducible reversible chain, $\Pp(\good\le\bad)\ge1/3$.
 
 In~\cite{ABOPS} the conjecture is motivated by bounds on the meeting time of two walkers in terms of hitting times of single states~\cite[Chapter~14]{AF} and~\cite{Oliveira,SousiWinkler}. Oliveira~\cite{Oliveira} proved that on every reversible chain the expected time for a system of coalescing walkers to merge into one is at most a constant multiple of the largest expected hitting time of a state; his proof bounds the time a reversible chain takes to meet a deterministic trajectory. Sousi and Winkler~\cite{SousiWinkler} compared hitting times of moving and of stationary targets, and showed that the largest hitting times of the two kinds agree on tori but can differ on a transitive graph.
 
-A second motivation in~\cite{ABOPS} is a symmetry. If the trap moved at rate $1$, the three processes $X$, $Y$ and $Z$ would be exchangeable, and, with ties at time $0$ broken uniformly, the first of the three pairs to meet would be $\{X,Y\}$ with probability $1/3$. With the trap frozen, $\{X,Y\}$ is not exchangeable with $\{X,Z\}$ and $\{Y,Z\}$, and the argument gives no bound. For transitive chains, Addario-Berry, Oliveira, Peres and Sousi proved $\Pp(\good<\bad)\ge1/4$~\cite[Theorem~1.2]{ABOPS}, by a relation between meeting times and hitting times of single states that holds when the chain is transitive. Holroyd's example~\cite[Section~6]{ABOPS} gives transitive chains with $\Pp(\good\le\bad)\le1/3+\delta$ for every $\delta>0$. Without reversibility the conjecture fails~\cite[Remark~1.7]{ABOPS}. Addario-Berry, Oliveira, Peres and Sousi note that any lower bound $\Pp(\good\le\bad)\ge c>0$ holding for all chains would be a new result~\cite[Section~1.1]{ABOPS}. The walkers meet at time $0$ when $X_0=Y_0$, so on a chain with $n$ states
+A second motivation in~\cite{ABOPS} is a symmetry. If the trap moved at rate $1$, the three processes $X$, $Y$ and $Z$ would be exchangeable, and, with ties at time $0$ broken uniformly, the first of the three pairs to meet would be $\{X,Y\}$ with probability $1/3$. With the trap frozen, $\{X,Y\}$ is not exchangeable with $\{X,Z\}$ and $\{Y,Z\}$, and the argument gives no bound. For transitive chains, Addario-Berry, Oliveira, Peres and Sousi proved $\Pp(\good<\bad)\ge1/4$~\cite[Theorem~1.2]{ABOPS}, by a relation between meeting times and hitting times of single states that holds when the chain is transitive. Holroyd's example~\cite[Section~6]{ABOPS} gives transitive chains with $\Pp(\good\le\bad)\le1/3+\delta$ for every $\delta>0$. Without reversibility the conjecture fails~\cite[Remark~1.6]{ABOPS}. Addario-Berry, Oliveira, Peres and Sousi note that any lower bound $\Pp(\good\le\bad)\ge c>0$ holding for all chains would be a new result~\cite[Section~1.1]{ABOPS}. The walkers meet at time $0$ when $X_0=Y_0$, so on a chain with $n$ states
 \[
 \Pp(\good\le\bad)\ \ge\ \sum_x\pi(x)^2\ \ge\ \frac1n .
 \]
@@ -334,7 +334,7 @@ $\ell$ & dimension of the cube in Holroyd's example & \cref{rem:scales}\\
 
 \begin{thebibliography}{9}
 
-\bibitem{ABOPS} L.~Addario-Berry, R.~I.~Oliveira, Y.~Peres and P.~Sousi, Random walks colliding before getting trapped, \emph{Electron. J. Probab.} \textbf{21} (2016), Paper No.~42, 19~pp., doi:10.1214/16-EJP4414, arXiv:1506.07845; statement numbers as in the journal version.
+\bibitem{ABOPS} L.~Addario-Berry, R.~I.~Oliveira, Y.~Peres and P.~Sousi, Random walks colliding before getting trapped, \emph{Electron. J. Probab.} \textbf{21} (2016), Paper No.~42, 19~pp., doi:10.1214/16-EJP4414, arXiv:1506.07845v1; statement numbers as in the arXiv version.
 
 \bibitem{AF} D.~Aldous and J.~A.~Fill, \emph{Reversible Markov Chains and Random Walks on Graphs}, unfinished monograph, 2002, recompiled 2014, \url{https://www.stat.berkeley.edu/~aldous/RWG/book.html}.
 
