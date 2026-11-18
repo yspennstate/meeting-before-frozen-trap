@@ -14,5 +14,5 @@
 | Conjecture 5.1 (inequality (1.1) for all finite reversible chains) | new conjecture | this paper |
 | Meeting-time and hitting-time bounds that motivate the conjecture | prior work | D. Aldous and J. A. Fill, Chapter 14; R. I. Oliveira, Trans. Amer. Math. Soc. 364 (2012); P. Sousi and P. Winkler, Combin. Probab. Comput. 23 (2014) |
 | The elementary bound P >= sum_x pi(x)^2 >= 1/n (the conjecture on at most three states) | standard | this paper, Section 1 |
-| Remark 5.2 (the block relation; it holds for the family of Proposition 1.3 and is open in general), including the value 1/3 + (2/3) 4^{-l} for Holroyd (cube dimension l)'s example | heuristic, not proved | this paper |
+| Remark 5.2 (the block relation; it holds for the family of Proposition 1.3 and is open in general), including the value 1/3 + (2/3) 4^{-l} for Holroyd's example on the cube of dimension l | heuristic, not proved | this paper |
 | Remark 5.3 example values | new computation | this paper, code/meeting.py |
