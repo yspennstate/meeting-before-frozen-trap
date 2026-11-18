@@ -53,7 +53,7 @@
 \thispagestyle{fancy}
 
 \begin{abstract}
-Let $X$ and $Y$ be independent rate-one random walks on a finite reversible Markov chain and $Z$ a frozen trap, the three started independently from the stationary law $\pi$. Addario-Berry, Oliveira, Peres and Sousi conjectured that $X$ and $Y$ meet before either hits $Z$ with probability at least $1/3$. We prove that on every chain with three or four states this probability is greater than $1/3+(2/3)\sum_x\pi(x)^3$; equivalently, given that $X_0$, $Y_0$, $Z$ are not all equal, $X$ and $Y$ meet first with conditional probability greater than $1/3$. This proves the conjecture on four states. Let $D$ be the probability minus $1/3+(2/3)\sum_x\pi(x)^3$. On three states $D$ has a closed form, and its infimum over the chains with a given $\pi$ is $0$. On four states $D$, multiplied by a positive polynomial, is a polynomial with positive coefficients in the weights $p_x$ and conductances $c_{xy}$ of the chain (jump rates $c_{xy}/p_x$); the expansion is exact and is done by computer. We conjecture $D\ge0$ for every finite reversible chain.
+Let $X$ and $Y$ be independent rate-one random walks on a finite reversible Markov chain and $Z$ a frozen trap, the three started independently from the stationary law $\pi$. Addario-Berry, Oliveira, Peres and Sousi conjectured that $X$ and $Y$ meet before either hits $Z$ with probability at least $1/3$. We prove that on every chain with three or four states this probability is greater than $1/3+(2/3)\sum_x\pi(x)^3$; equivalently, given that $X_0$, $Y_0$, $Z$ are not all equal, $X$ and $Y$ meet first with conditional probability greater than $1/3$. This proves the conjecture on four states. Let $D$ be the difference between this probability and $1/3+(2/3)\sum_x\pi(x)^3$. On three states $D$ has a closed form, and its infimum over the chains with a given $\pi$ is $0$. On four states $D$, multiplied by a positive polynomial, is a polynomial with positive coefficients in the weights $p_x$ and conductances $c_{xy}$ of the chain (jump rates $c_{xy}/p_x$); the expansion is exact and is done by computer. We conjecture $D\ge0$ for every finite reversible chain.
 \end{abstract}
 
 \noindent\textit{Keywords:} reversible Markov chains, random walks, meeting times, hitting times, first-step equations.\\
@@ -99,7 +99,7 @@ For every irreducible reversible chain $P$ on three or four states, $D(P)>0$. In
 \end{theorem}
 
 \begin{proposition}\label{prop:sharp}
-On two states $D=0$ for every chain. On three states, for every $\pi$ with positive entries, the infimum of $D$ over the reversible chains with stationary law $\pi$ is $0$, and it is not attained.
+On two states $D=0$ for every irreducible chain. On three states, for every $\pi$ with positive entries, the infimum of $D$ over the irreducible reversible chains with stationary law $\pi$ is $0$, and it is not attained.
 \end{proposition}
 
 So on three states the bound $\tfrac13+\tfrac23\sum_x\pi(x)^3$ cannot be raised at any $\pi$, while \cref{conj:abops} is far from sharp there: the smallest value of $\tfrac13+\tfrac23\sum_x\pi(x)^3$ over $\pi$ on three states is $11/27$. \Cref{conj:abops} is open on five or more states.
