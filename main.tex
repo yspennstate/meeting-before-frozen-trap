@@ -83,15 +83,12 @@ The event $\{X_0=Y_0=Z\}$ has probability $\sum_x\pi(x)^3$ and lies in $\{\good\
 \[
 \Pp(\good\le\bad\mid X_0,Y_0,Z\text{ not all equal})\ \ge\ \frac13 .
 \]
-Since $\{X_0=Y_0=Z\}\subset\{\good\le\bad\}$, this is the inequality $D(P)\ge0$ for
-\[
-D(P):=\Pp(\good\le\bad)-\frac13-\frac23\sum_x\pi(x)^3 ,
-\]
-which we call the conditional bound:
+Since $\{X_0=Y_0=Z\}\subset\{\good\le\bad\}$, this is the inequality
 \begin{equation}\label{eq:refined}
-D(P)\ \ge\ 0,
+D(P):=\Pp(\good\le\bad)-\frac13-\frac23\sum_x\pi(x)^3\ \ge\ 0,
 \end{equation}
-Inequality~\eqref{eq:refined} implies \cref{conj:abops} and holds with equality on every chain with two states (\cref{lem:two}). For distinct states $x,y,z$ let $h_z(x,y)$ be the probability that $X$ and $Y$, started at $x$ and $y$, meet before either hits the trap placed at $z$. By \cref{lem:N}, inequality~\eqref{eq:refined} is equivalent to
+which we call the conditional bound. It implies \cref{conj:abops} and holds with equality on every chain with two
+states (\cref{lem:two}). For distinct states $x,y,z$ let $h_z(x,y)$ be the probability that $X$ and $Y$, started at $x$ and $y$, meet before either hits the trap placed at $z$. By \cref{lem:N}, inequality~\eqref{eq:refined} is equivalent to
 \begin{equation}\label{eq:triples}
 \sum_{\{x,y,z\}}\pi(x)\pi(y)\pi(z)\bigl[h_z(x,y)+h_x(y,z)+h_y(z,x)\bigr]\ \ge\ \sum_{\{x,y,z\}}\pi(x)\pi(y)\pi(z),
 \end{equation}
@@ -337,7 +334,7 @@ $\ell$ & dimension of the cube in Holroyd's example & \cref{rem:scales}\\
 
 \begin{thebibliography}{9}
 
-\bibitem{ABOPS} L.~Addario-Berry, R.~I.~Oliveira, Y.~Peres and P.~Sousi, Random walks colliding before getting trapped, \emph{Electron. J. Probab.} \textbf{21} (2016), Paper No.~42, 19~pp., doi:10.1214/16-EJP4414.
+\bibitem{ABOPS} L.~Addario-Berry, R.~I.~Oliveira, Y.~Peres and P.~Sousi, Random walks colliding before getting trapped, \emph{Electron. J. Probab.} \textbf{21} (2016), Paper No.~42, 19~pp., doi:10.1214/16-EJP4414, arXiv:1506.07845; statement numbers as in the journal version.
 
 \bibitem{AF} D.~Aldous and J.~A.~Fill, \emph{Reversible Markov Chains and Random Walks on Graphs}, unfinished monograph, 2002, recompiled 2014, \url{https://www.stat.berkeley.edu/~aldous/RWG/book.html}.
 

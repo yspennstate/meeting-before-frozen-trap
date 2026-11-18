@@ -2,8 +2,8 @@
 
 | Statement | Status | Credit |
 |---|---|---|
-| The problem; Conjecture 1.5 (meeting before trapping with probability at least 1/3, ties at time 0 counted as meeting) | prior work | L. Addario-Berry, R. I. Oliveira, Y. Peres, P. Sousi, Electron. J. Probab. 21 (2016), Paper No. 42, doi:10.1214/16-EJP4414, arXiv:1506.07845 |
-| Lower bound 1/4 for transitive chains; a bound for transitive chains with general speeds; a non-transitive counterexample for general speeds; failure without reversibility | prior work | same paper, Theorems 1.2, 1.3, 1.4 and Remark 1.6 |
+| The problem; Conjecture 1.6 (meeting before trapping with probability at least 1/3, ties at time 0 counted as meeting) | prior work | L. Addario-Berry, R. I. Oliveira, Y. Peres, P. Sousi, Electron. J. Probab. 21 (2016), Paper No. 42, doi:10.1214/16-EJP4414, arXiv:1506.07845 |
+| Lower bound 1/4 for transitive chains; a bound for transitive chains with general speeds; a non-transitive counterexample for general speeds; failure without reversibility | prior work | same paper (journal numbering), Theorems 1.2, 1.3, 1.5 and Remark 1.7 |
 | Transitive chains with probability at most 1/3 + delta (the constant 1/3 would be sharp) | prior work | A. Holroyd, in the same paper, Section 6 |
 | Network description of reversible chains (weights and conductances) | standard | D. A. Levin, Y. Peres, Markov Chains and Mixing Times, 2nd ed., AMS 2017, Chapter 9 |
 | Inequality (1.1), D >= 0, and the triple form (1.2) | new | this paper |
