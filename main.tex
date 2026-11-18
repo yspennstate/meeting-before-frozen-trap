@@ -73,7 +73,7 @@ For every finite irreducible reversible chain, $\Pp(\good\le\bad)\ge1/3$.
 
 In~\cite{ABOPS} the conjecture is motivated by bounds on the meeting time of two walkers in terms of hitting times of single states~\cite[Chapter~14]{AF} and~\cite{Oliveira,SousiWinkler}. Oliveira~\cite{Oliveira} proved that on every reversible chain the expected time for a system of coalescing walkers to merge into one is at most a constant multiple of the largest expected hitting time of a state; his proof bounds the time a reversible chain takes to meet a deterministic trajectory. Sousi and Winkler~\cite{SousiWinkler} compared hitting times of moving and of stationary targets, and showed that the largest hitting times of the two kinds agree on tori but can differ on a transitive graph.
 
-A second motivation in~\cite{ABOPS} is a symmetry. If the trap moved at rate $1$, the three processes $X$, $Y$ and $Z$ would be exchangeable, and, with ties at time $0$ broken uniformly, the first of the three pairs to meet would be $\{X,Y\}$ with probability $1/3$. With the trap frozen, $\{X,Y\}$ is not exchangeable with $\{X,Z\}$ and $\{Y,Z\}$, and the argument gives no bound. For transitive chains, Addario-Berry, Oliveira, Peres and Sousi proved $\Pp(\good<\bad)\ge1/4$~\cite[Theorem~1.2]{ABOPS}, using the relation between meeting times and hitting times of single states that holds when the chain is transitive; this relation is the martingale identity of Aldous and Fill~\cite[Chapter~14, Proposition~5]{AF} between expected meeting and hitting times~\cite[Section~1]{ABOPS}. Holroyd's example~\cite[Section~6]{ABOPS} gives transitive chains with $\Pp(\good\le\bad)\le1/3+\delta$ for every $\delta>0$. Without reversibility the conjecture fails~\cite[Remark~1.6]{ABOPS}. Addario-Berry, Oliveira, Peres and Sousi note that any lower bound $\Pp(\good\le\bad)\ge c>0$ holding for all chains would be a new result~\cite[Section~1.1]{ABOPS}. The walkers meet at time $0$ when $X_0=Y_0$, so on a chain with $n$ states
+A second motivation in~\cite{ABOPS} is a symmetry. If the trap moved at rate $1$, the three processes $X$, $Y$ and $Z$ would be exchangeable, and, with ties at time $0$ broken uniformly, the first of the three pairs to meet would be $\{X,Y\}$ with probability $1/3$. With the trap frozen, $\{X,Y\}$ is not exchangeable with $\{X,Z\}$ and $\{Y,Z\}$, and the argument gives no bound. For transitive chains, Addario-Berry, Oliveira, Peres and Sousi proved $\Pp(\good<\bad)\ge1/4$~\cite[Theorem~1.2]{ABOPS}, by a martingale argument built on a relation between meeting times and hitting times of single states that they establish for transitive chains~\cite[Section~1]{ABOPS}. Holroyd's example~\cite[Section~6]{ABOPS} gives transitive chains with $\Pp(\good\le\bad)\le1/3+\delta$ for every $\delta>0$. Without reversibility the conjecture fails~\cite[Remark~1.6]{ABOPS}. Addario-Berry, Oliveira, Peres and Sousi note that any lower bound $\Pp(\good\le\bad)\ge c>0$ holding for all chains would be a new result~\cite[Section~1.1]{ABOPS}. The walkers meet at time $0$ when $X_0=Y_0$, so on a chain with $n$ states
 \[
 \Pp(\good\le\bad)\ \ge\ \sum_x\pi(x)^2\ \ge\ \frac1n .
 \]
@@ -202,7 +202,7 @@ and in $m_1d_2d_3$ it is $\alpha_1(\alpha_2\alpha_3+p_2p_3)$, and similarly for 
 \end{proof}
 
 \begin{proof}[Proof of \cref{thm:main} for three states]
-Since $Se_2-2e_3=\sum_{x\ne y}p_x^2p_y+e_3>0$, every monomial on the right of \cref{prop:three} is nonnegative. The chain is irreducible, so at least two of $w_1,w_2,w_3$ are positive, say $w_i,w_j$ with third index $k$; then the monomial $S\,p_ip_k\,w_j\,w_i^2$ (from $z=j$) is positive. The $d_z$ are positive, hence $\sum_zh_z>1$ and $D=N/(3S^3)=2e_3(\sum_zh_z-1)/S^3>0$.
+Since $Se_2-2e_3=\sum_{x\ne y}p_x^2p_y+e_3>0$, every coefficient on the right of \cref{prop:three}, as a polynomial in $w$, is nonnegative. The chain is irreducible, so at least two of $w_1,w_2,w_3$ are positive, say $w_i,w_j$ with third index $k$; then the monomial $w_jw_i^2$ occurs only in the summand $z=j$, with coefficient $S\,p_ip_k>0$, so the right side is positive. The $d_z$ are positive, hence $\sum_zh_z>1$ and $D=N/(3S^3)=2e_3(\sum_zh_z-1)/S^3>0$.
 \end{proof}
 
 \begin{proof}[Proof of \cref{prop:sharp}]
@@ -243,7 +243,7 @@ $K_4$ & $128,128,128,128$ & $764{,}076$ & $6$\\
 \end{table}
 
 \begin{proof}[Proof of \cref{prop:cert}]
-Expand $\det A_z$ and $\operatorname{adj}(A_z)$ for the four $3\times3$ systems and collect $R$ as a polynomial in $p_1,\dots,p_4$ and the $c_e$. The entries of $A_z$ and $b_z$ have degree $2$, so $p_z\,v_z^{\mathsf T}\operatorname{adj}(A_z)b_z\prod_{y\ne z}\det A_y$ is homogeneous of degree $1+2+4+2+18=27$, and $e_3(p)Q$ of degree $3+24=27$. The expansion is carried out by the scripts \texttt{n4\_cramer.py}, in SymPy~\cite{SymPy} polynomial arithmetic, and \texttt{n4\_integer.py}, in integer arithmetic on dictionaries of monomials with determinants expanded over permutations and adjugates by signed minors. Both return the monomial counts of \cref{tab:cert} and no coefficient below $6$.
+Expand $\det A_z$ and $\operatorname{adj}(A_z)$ for the four $3\times3$ systems and collect $R$ as a polynomial in $p_1,\dots,p_4$ and the $c_e$. The entries of $A_z$ and $b_z$ have degree $2$, so $p_z\,v_z^{\mathsf T}\operatorname{adj}(A_z)b_z\prod_{y\ne z}\det A_y$ is homogeneous of degree $1+2+4+2+18=27$, and $e_3(p)Q$ of degree $3+24=27$. The expansion is exact. It is computed twice: by \texttt{n4\_cramer.py}, in SymPy~1.13.1 polynomial arithmetic~\cite{SymPy}, and by \texttt{n4\_integer.py}, in integer arithmetic on dictionaries of monomials, with determinants expanded over permutations and adjugates by signed minors. For each of the six graphs $R$ has the number of monomials listed in \cref{tab:cert}, and no coefficient of $R$ is below $6$.
 \end{proof}
 
 \begin{proof}[Proof of \cref{thm:main} for four states]
@@ -253,7 +253,7 @@ Given an irreducible reversible chain on four states, relabel it so that its sup
 \section{The conditional bound for general chains}\label{sec:remarks}
 
 \begin{conjecture}\label{conj:refined}
-For every finite irreducible reversible chain,
+For every finite irreducible reversible chain, $D(P)\ge0$; that is, \eqref{eq:refined} holds:
 \[
 \Pp(\good\le\bad)\ \ge\ \frac13+\frac23\sum_x\pi(x)^3 .
 \]
